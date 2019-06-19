@@ -9,7 +9,11 @@ router.get('/', async (req, res) => {
     res.send({products});
 });
 
-// SEARCH
+router.get('/search/:id', async (req, res) => {
+    const product = await pool.query('SELECT * FROM product WHERE product.name LIKE "%?%";', [req.query.keyword]);
+    res.send({product});    
+    console.debug(req.query);
+});
 
 router.get('/:id', async (req, res) => {
     const product = await pool.query('SELECT * FROM product WHERE product_id=?', [req.params.id]);
