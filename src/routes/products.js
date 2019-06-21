@@ -9,10 +9,9 @@ router.get('/', async (req, res) => {
     res.send({products});
 });
 
-router.get('/search/:id', async (req, res) => {
-    const product = await pool.query('SELECT * FROM product WHERE product.name LIKE "%?%";', [req.query.keyword]);
-    res.send({product});    
-    console.debug(req.query);
+router.get('/search', async (req, res) => {
+    const product = await pool.query('SELECT * FROM product WHERE product.name LIKE "%?%";', [req.query.body]);
+    res.send({product});
 });
 
 router.get('/:id', async (req, res) => {
@@ -30,13 +29,13 @@ router.get('/inDepartment/:id', async (req, res) => {
     res.send({in_department});
 });
 
+
 // DETAILS
 
 // LOCATIONS
 
 // REVIEWS
     // post
-
 
 
 // Export

@@ -14,7 +14,6 @@ app.use(express.json());
 
 // Global Variables
 app.use((req, res, next) => {
-    
     next();
 });
 
